@@ -27,7 +27,8 @@ def predict():
     predictions = model.predict(h2o_data)
     
     # Extract prediction result
-    prediction_result = int(predictions.as_data_frame(use_multi_thread=True)['predict'][0])
+    # prediction_result = int(predictions.as_data_frame(use_multi_thread=True)['predict'][0])
+    prediction_result = round(predictions.as_data_frame(use_multi_thread=True)['predict'][0], 1) # rounded float
     return jsonify({'diabetes_risk': prediction_result})
 
 if __name__ == '__main__':
